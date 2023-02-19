@@ -24,5 +24,8 @@ subprocess.run(["git", "add", "."])
 # Commit the changes using Git
 subprocess.run(["git", "commit", "-m", "Added a new line to file.txt"])
 
+# Push the changes to the remote repository using Git
+subprocess.run(["git", "push"])
+
 # Close the browser
 driver.quit()
