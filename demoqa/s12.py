@@ -16,7 +16,7 @@ time.sleep(2)
 
 # Make changes to a file
 with open("file.txt", "a") as f:
-    f.write("New line of text")
+    f.write("New line of text\n")
 
 # Add the changes to the staging area using Git
 subprocess.run(["git", "add", "."])
