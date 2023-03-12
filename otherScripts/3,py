@@ -1,0 +1,42 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+# Initialize the webdriver
+# driver = webdriver.Chrome()
+options = webdriver.ChromeOptions()
+options.add_experimental_option('excludeSwitches', ['enable-logging'])
+driver = webdriver.Chrome(options=options)
+
+# Navigate to the webpage
+driver.get("https://ap.bayatree.com/reading/interactivity/level:1/section:20/lesson:lesson1/activity:4")
+
+# Find the container element
+container = driver.find_element(By.CLASS_NAME, "phonicsMain")
+
+# Get the minimum height and width
+viewport_height = driver.execute_script("return window.innerHeight;")
+min_height_percent = container.value_of_css_property("min-height").replace("%", "")
+min_height_pixels = int(viewport_height * int(min_height_percent) / 100)
+
+# Use the retrieved height value to simulate different screen sizes and take a screenshot
+# driver.set_window_size(int(min_width.replace("px", "")), min_height_pixels)
+driver.set_window_size(min_height_pixels, viewport_height)
+driver.save_screenshot("min_height.png")
+
+# print(int(min_width.replace("px", "")))
+print(min_height_pixels)
+
+# Get the maximum height and width
+max_height = container.value_of_css_property("max-height")
+if max_height != "none":
+    max_height_percent = max_height.replace("%", "")
+    max_height_pixels = int(viewport_height * int(max_height_percent) / 100)
+
+    # Use the retrieved height value to simulate different screen sizes and take a screenshot
+    driver.set_window_size(min_height_pixels, viewport_height)
+    # print(int(max_width.replace("px", "")))
+    print(max_height_pixels)
+    driver.save_screenshot("max_height.png")
+
+# Close the webdriver
+driver.quit()

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>{{ title }}</title>
+  </head>
+  <body>
+
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Accordion Item #1
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec velit et mauris volutpat euismod. Nunc lacinia mauris nec lorem semper, id interdum mi tristique. Sed feugiat, justo at pretium feugiat, arcu augue sodales odio, quis aliquet dolor massa et enim. Sed vel augue ac tellus convallis facilisis in vel sem. Nulla facilisi. Sed varius bibendum tellus, sit amet cursus neque bibendum vitae.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Accordion Item #2
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Fusce vel malesuada sapien, non bibendum elit. Nunc sit amet ipsum sed nunc tristique vulputate. Nam nec elit a massa suscipit rutrum. Suspendisse potenti. Praesent blandit vel lorem eget tristique. Donec nec purus odio. Vivamus ac dolor vel sapien faucibus egestas. Sed rhoncus id justo in dignissim.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- Popper.js first, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
+
+    <h1>{{ title }}</h1>
+    <p>Welcome to my Flask application!</p>
+  </body>
+</html>
