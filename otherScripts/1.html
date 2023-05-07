@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Page</title>
+  </head>
+  <body>
+    <h1>My Form</h1>
+    <form id="myForm" onsubmit="return validateForm()">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <div id="nameError" style="display:none; color:red">Please enter a valid name</div>
+      <br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" minlength="5" maxlength="50" required>
+      <div id="emailError" style="display:none; color:red">Please enter a valid email address</div>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    <div id="confirmation" style="display:none">
+      <p>Thank you for submitting your information. We have received your submission and will review it shortly. You should receive a confirmation email within the next few minutes. If you do not receive an email, please contact us at BayaTree.</p>
+      <button onclick="fillFormAgain()">Fill Again</button>
+    </div>
+    <script>
+      function validateForm() {
+        var nameInput = document.getElementById("name");
+        var emailInput = document.getElementById("email");
+        var nameError = document.getElementById("nameError");
+        var emailError = document.getElementById("emailError");
+        var valid = true;
+        if (!nameInput.checkValidity()) {
+          nameError.style.display = "block";
+          valid = false;
+        } else {
+          nameError.style.display = "none";
+        }
+        if (!emailInput.checkValidity()) {
+          emailError.style.display = "block";
+          valid = false;
+        } else {
+          emailError.style.display = "none";
+        }
+        if (valid) {
+          document.getElementById("confirmation").style.display = "block";
+          document.getElementById("myForm").reset();
+          document.getElementById("myForm").style.display = "none";
+          return false;
+        }
+        return valid;
+      }
+
+      function fillFormAgain() {
+        document.getElementById("confirmation").style.display = "none";
+        document.getElementById("myForm").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
