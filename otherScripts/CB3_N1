@@ -1,0 +1,75 @@
+import gradio as gr
+import openai
+import winsound
+from elevenlabslib import *
+from pydub import AudioSegment
+from pydub.playback import play
+import io
+import config
+import sounddevice as sd
+
+openai.api_key = config.OPENAI_API_KEY
+api_key = config.ELEVENLABS_API_KEY
+from elevenlabslib import ElevenLabsUser
+user = ElevenLabsUser(api_key)
+
+messages = ["You are an advisor. Please respond to all input in 50 words or less."]
+
+def transcribe(audio, fs):
+    global messages
+
+    audio_file = io.BytesIO()
+    audio_segment = audio.astype('float32').tobytes()
+    audio_file.write(audio_segment)
+    audio_file.seek(0)
+
+    transcript = openai.Audio.transcribe("whisper-1", audio_file)
+
+    messages.append(f"\nUser: {transcript['text']}")
+
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=messages[-1],
+        max_tokens=80,
+        n=1,
+        stop=None,
+        temperature=0.5,
+    )
+
+    system_message = response["choices"][0]["text"]
+    messages.append(f"{system_message}")
+
+    voice = user.get_voices_by_name("Antoni")[0]
+    system_audio = voice.generate_audio_bytes(system_message)
+
+    audio_output = io.BytesIO(system_audio)
+    audio_segment = AudioSegment.from_file(audio_output, format="mp3")
+    audio_segment.export("output.wav", format="wav")
+
+    winsound.PlaySound("output.wav", winsound.SND_FILENAME)
+
+    chat_transcript = "\n".join(messages)
+    return chat_transcript
+
+def capture_audio(input_device, frames, time, status):
+    if status:
+        print('Error:', status)
+    transcribe(frames, input_device['default_samplerate'])
+
+input_device_info = sd.query_devices(kind='input')
+input_device = input_device_info[0]
+samplerate = int(input_device['default_samplerate'])
+
+stream = sd.InputStream(device=input_device['name'], channels=1, callback=capture_audio, samplerate=samplerate)
+stream.start()
+
+iface = gr.Interface(
+    fn=None,
+    inputs=gr.inputs.Textbox(placeholder="Please start speaking..."),
+    outputs=gr.outputs.Textbox(),
+    title="🤖 My Desktop ChatGPT Assistant 🤖",
+    description="🌟 Please ask me your question and I will respond both verbally and in text to you...",
+)
+
+iface.launch()
+stream.stop()
