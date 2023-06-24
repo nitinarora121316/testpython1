@@ -1,0 +1,54 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+# Set up Selenium WebDriver
+driver = webdriver.Chrome()  # Replace with the path to your chromedriver executable
+driver.maximize_window()
+
+# Load the website URL
+url = "http://demo.automationtesting.in/Windows.html"
+driver.get(url)
+print(driver.current_url)
+
+button = driver.find_element(By.XPATH, "//a[@href='http://www.selenium.dev']//button[@class='btn btn-info'][normalize-space()='click']")
+button.click()
+
+time.sleep(2)
+
+print(driver.current_window_handle)
+print(driver.current_url)
+
+time.sleep(2)
+
+# Get the initial window handle
+handle_0 = driver.current_window_handle
+
+# Get all window handles
+window_handles = driver.window_handles
+
+# Find the second window handle
+handle_1 = None
+for handle in window_handles:
+    if handle != handle_0:
+        handle_1 = handle
+        break
+
+# Check if a second window handle was found
+if handle_1 is None:
+    print("No second window handle found.")
+    driver.quit()
+    exit()
+
+while True:
+    # Switch to handle 1
+    driver.switch_to.window(handle_1)
+    # Do whatever actions you want to perform on handle 1
+    # ...
+    time.sleep(2)
+
+    # Switch to handle 0
+    driver.switch_to.window(handle_0)
+    time.sleep(2)
+    # Do whatever actions you want to perform on handle 0
+    # ...
