@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Right-Click Button</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .right-click-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    .options {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .options a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .options a:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <button class="right-click-button" oncontextmenu="showOptions(event)">Right-click me</button>
+  <div class="options" id="options">
+    <a href="#" onclick="editOption()">Edit</a>
+    <a href="#" onclick="copyOption()">Copy</a>
+    <a href="#" onclick="pasteOption()">Paste</a>
+    <a href="#" onclick="deleteOption()">Delete</a>
+  </div>
+  <script>
+    function showOptions(event) {
+      event.preventDefault();
+      const options = document.getElementById('options');
+      options.style.display = 'block';
+      options.style.left = event.pageX + 'px';
+      options.style.top = event.pageY + 'px';
+    }
+
+    function editOption() {
+      alert('Edit option selected');
+      hideOptions();
+    }
+
+    function copyOption() {
+      alert('Copy option selected');
+      hideOptions();
+    }
+
+    function pasteOption() {
+      alert('Paste option selected');
+      hideOptions();
+    }
+
+    function deleteOption() {
+      alert('Delete option selected');
+      hideOptions();
+    }
+
+    function hideOptions() {
+      const options = document.getElementById('options');
+      options.style.display = 'none';
+    }
+
+    document.addEventListener('click', function(event) {
+      const options = document.getElementById('options');
+      if (!options.contains(event.target)) {
+        hideOptions();
+      }
+    });
+  </script>
+</body>
+</html>
