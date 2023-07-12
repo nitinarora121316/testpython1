@@ -1,0 +1,82 @@
+import docx
+import pyttsx3
+import pygame
+
+def read_aloud_from_docx(docx_file):
+    # Open the Word document
+    doc = docx.Document(docx_file)
+
+    # Initialize male and female text-to-speech engines
+    engine_male = pyttsx3.init()
+    engine_female = pyttsx3.init()
+
+    # Get the available voices
+    voices = engine_male.getProperty('voices')
+
+    # Initialize voice indices
+    male_voice_index = 0
+    female_voice_index = 0
+
+    # Set slower pace for male voice
+    engine_male.setProperty('rate', 150)  # Adjust the value to change the pace
+
+    # Set slower pace for female voice
+    engine_female.setProperty('rate', 150)  # Adjust the value to change the pace
+
+    # Initialize pygame mixer
+    pygame.mixer.init()
+
+    # Load and play the calm background music
+    pygame.mixer.music.load('ambient-classical-guitar.mp3')  # Replace 'calm_music.mp3' with the path to your calm background music file
+    pygame.mixer.music.set_volume(0.3)  # Set the volume to a lower level (adjust the value as needed)
+    pygame.mixer.music.play(-1)  # Play the music in a loop
+
+    # Iterate over paragraphs in a cyclic manner
+    paragraph_count = len(doc.paragraphs)
+    for i in range(paragraph_count):
+        # Get the current paragraph
+        paragraph = doc.paragraphs[i]
+
+        # Strip leading/trailing whitespaces
+        text = paragraph.text.strip()
+
+        # Check if the paragraph is non-empty
+        if text:
+            # Determine the voice based on paragraph index
+            if i % 2 == 0:
+                # Use a male voice
+                male_voice = voices[male_voice_index % len(voices)].id
+                male_voice_index += 1
+                engine_male.setProperty('voice', male_voice)
+                engine_male.say(text)
+                engine_male.runAndWait()
+            else:
+                # Use a female voice
+                female_voice = voices[female_voice_index % len(voices)].id
+                female_voice_index += 1
+                engine_female.setProperty('voice', female_voice)
+                engine_female.say(text)
+                engine_female.runAndWait()
+
+            # Pause and ask a question
+            if i % 3 == 0:
+                pause_and_ask_question()
+
+    # Stop the background music
+    pygame.mixer.music.stop()
+
+def pause_and_ask_question():
+    # Pause the reading
+    pygame.mixer.music.pause()
+
+    # Ask a question
+    question = input("Question: ")  # Replace this with your own question input mechanism
+
+    # Resume the reading
+    pygame.mixer.music.unpause()
+
+# Specify the path to your Word document
+word_file = r'C:\Users\asus\Desktop\abc.docx'
+
+# Call the function to read aloud the content of the Word document
+read_aloud_from_docx(word_file)
