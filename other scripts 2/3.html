@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Two Text Fields</title>
+  <style>
+    /* CSS styles for the text fields */
+    .input-container {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+    }
+
+    input {
+      width: 200px;
+      padding: 5px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="input-container">
+    <label for="field1">Field 1:</label>
+    <input type="text" id="field1" value="Hello World" readonly />
+  </div>
+
+  <div class="input-container">
+    <label for="field2">Field 2:</label>
+    <input type="text" id="field2" />
+  </div>
+
+  <script>
+    // JavaScript code can be placed here
+    // For this example, let's add an event listener to copy the text from Field 1 to Field 2 on double click in Field 2.
+
+    const field1Input = document.getElementById('field1');
+    const field2Input = document.getElementById('field2');
+
+    field2Input.addEventListener('dblclick', () => {
+      field2Input.value = field1Input.value;
+    });
+
+    // field2Input.addEventListener('input', (event) => {
+    //   const fieldValue = event.target.value;
+    //   console.log('Field 2 Value:', fieldValue);
+    // });
+  </script>
+</body>
+</html>
