@@ -18,10 +18,10 @@ def read_aloud_from_docx(docx_file):
     female_voice_index = 0
 
     # Set slower pace for male voice
-    engine_male.setProperty('rate', 150)  # Adjust the value to change the pace
+    engine_male.setProperty('rate', 180)  # Adjust the value to change the pace
 
     # Set slower pace for female voice
-    engine_female.setProperty('rate', 150)  # Adjust the value to change the pace
+    engine_female.setProperty('rate', 180)  # Adjust the value to change the pace
 
     # Initialize pygame mixer
     pygame.mixer.init()
@@ -62,7 +62,9 @@ def read_aloud_from_docx(docx_file):
     pygame.mixer.music.stop()
 
 # Specify the path to your Word document
-word_file = r'C:\Users\asus\Desktop\abc.docx'
+# word_file = r'C:\Users\asus\Desktop\abc.docx'
+word_file = r'C:\Users\asus\Desktop\New folder\listening\abc2.docx'
+
 
 # Call the function to read aloud the content of the Word document
 read_aloud_from_docx(word_file)

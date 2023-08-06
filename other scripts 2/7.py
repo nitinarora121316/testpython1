@@ -12,7 +12,7 @@ file_input.send_keys(file_path)
 # Optionally, perform additional actions before submitting the form or continuing with the upload process
 
 upload_button = driver.find_element(By.CSS_SELECTOR, "input[value='Press']")  # Replace "uploadButton" with the actual ID of the upload button or form element
-upload_button.click()  # Or use any other appropriate action to initiate the file upload
+upload_button.click()  # Or use any other appropriate action to initiate the file upload``
 
 time.sleep(3)
 

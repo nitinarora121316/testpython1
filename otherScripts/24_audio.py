@@ -76,7 +76,8 @@ def pause_and_ask_question():
     pygame.mixer.music.unpause()
 
 # Specify the path to your Word document
-word_file = r'C:\Users\asus\Desktop\abc.docx'
+# word_file = r'C:\Users\asus\Desktop\abc2.docx'
+word_file = r'C:\Users\asus\Desktop\New folder\listening\abc2.docx'
 
 # Call the function to read aloud the content of the Word document
 read_aloud_from_docx(word_file)
