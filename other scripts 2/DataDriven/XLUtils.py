@@ -21,7 +21,6 @@ class XLUtils:
         sheet = self.workbook[sheetName]
         sheet.cell(row=rownum, column=columnno, value=data)
         self.workbook.save(self.file)
-
     def fetchAllData(self, sheetName):
         sheet = self.workbook[sheetName]
         all_data = []

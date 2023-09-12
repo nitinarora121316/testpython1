@@ -17,10 +17,14 @@ custom_cookies = [
 for cookie in custom_cookies:
     driver.add_cookie(cookie)
 
+# Delete a specific cookie by name
+cookie_name_to_delete = 'my_cookie1'
+driver.delete_cookie(cookie_name_to_delete)
+
 # Capture all cookies (including the ones you added)
 all_cookies = driver.get_cookies()
 
-# Print all the cookies
+# Print all the cookies after deletion
 for cookie in all_cookies:
     print(f"Name: {cookie['name']}")
     print(f"Value: {cookie['value']}")
@@ -36,8 +40,6 @@ for cookie in all_cookies:
     print(f"Secure: {cookie.get('secure', 'None')}")
     print(f"HttpOnly: {cookie.get('httpOnly', 'None')}")
     print("\n")
-
-
 
 # Close the WebDriver
 driver.quit()
