@@ -1,0 +1,33 @@
+2023-09-17 07:32:08,151 - ERROR: Error: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=116.0.5845.188)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00007FF782C13E62+57250]
+	(No symbol) [0x00007FF782B8BC02]
+	(No symbol) [0x00007FF782A5E0BB]
+	(No symbol) [0x00007FF782A59E51]
+	(No symbol) [0x00007FF782A4C4EF]
+	(No symbol) [0x00007FF782A4D899]
+	(No symbol) [0x00007FF782A4C8C8]
+	(No symbol) [0x00007FF782A4B9CE]
+	(No symbol) [0x00007FF782A4B973]
+	(No symbol) [0x00007FF782A4A3F5]
+	(No symbol) [0x00007FF782A4AB63]
+	(No symbol) [0x00007FF782A5FC6B]
+	(No symbol) [0x00007FF782ACE687]
+	(No symbol) [0x00007FF782AB67AA]
+	(No symbol) [0x00007FF782ACE312]
+	(No symbol) [0x00007FF782AB6583]
+	(No symbol) [0x00007FF782A8CC71]
+	(No symbol) [0x00007FF782A8DE54]
+	GetHandleVerifier [0x00007FF782EC4CF2+2879026]
+	GetHandleVerifier [0x00007FF782F16F30+3215472]
+	GetHandleVerifier [0x00007FF782F0FD4F+3186319]
+	GetHandleVerifier [0x00007FF782CA5505+652869]
+	(No symbol) [0x00007FF782B97518]
+	(No symbol) [0x00007FF782B935F4]
+	(No symbol) [0x00007FF782B936EC]
+	(No symbol) [0x00007FF782B838E3]
+	BaseThreadInitThunk [0x00007FFDA551257D+29]
+	RtlUserThreadStart [0x00007FFDA712AA68+40]
+
