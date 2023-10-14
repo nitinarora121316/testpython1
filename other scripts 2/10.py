@@ -14,9 +14,9 @@ from selenium.webdriver.chrome.options import Options
 # options.add_argument("--headless")  # Run Chrome in headless mode (without opening a window)
 # driver = webdriver.Chrome(options=options)
 
-# driver = webdriver.Chrome(executable_path=r"C:\Users\asus\Downloads\chromedriver.exe")
+driver = webdriver.Chrome(executable_path=r"C:\Users\asus\Downloads\chromedriver.exe")
 # driver = webdriver.Firefox()
-driver = webdriver.Chrome()
+# driver = webdriver.Chrome()
 
 
 

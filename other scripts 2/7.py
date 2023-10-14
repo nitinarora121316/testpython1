@@ -2,7 +2,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 
-driver = webdriver.Chrome()  # Replace with the path to your webdriver executable
+# driver = webdriver.Chrome()  # Replace with the path to your webdriver executable
+driver = webdriver.Chrome(executable_path=r"C:\Users\asus\Downloads\chromedriver.exe")
+
 driver.get("https://cgi-lib.berkeley.edu/ex/fup.html")  # Replace with the URL of the webpage
 
 file_path = r"C:\Users\asus\Desktop\1 Copy.txt"  # Replace with the actual file path
