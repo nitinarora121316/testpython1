@@ -1,7 +1,8 @@
 from selenium import webdriver
 
 # Set up the WebDriver (you should replace 'path_to_chromedriver' with the actual path to your ChromeDriver executable)
-driver = webdriver.Chrome(executable_path=r"C:\Users\asus\Downloads\chromedriver.exe")
+# driver = webdriver.Chrome(executable_path=r"C:\Users\asus\Downloads\chromedriver.exe")
+driver = webdriver.Chrome()
 
 # Navigate to the URL
 url = "https://www.amazon.in"
