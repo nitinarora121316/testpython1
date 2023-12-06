@@ -1,0 +1,32 @@
+import unittest
+from selenium import webdriver
+
+class TestTextInList(unittest.TestCase):
+
+    def setUp(self):
+        # Set up the Selenium WebDriver (assuming Chrome in this example)
+        self.driver = webdriver.Chrome(executable_path='/path/to/chromedriver')
+        self.driver.get('https://example.com')  # Replace with the URL of your web page
+
+    def tearDown(self):
+        # Close the browser after the test
+        self.driver.quit()
+
+    def test_text_in_list(self):
+        # Replace 'Your Text' with the text you want to check for
+        text_to_check = 'Your Text'
+
+        # Replace 'your-list-selector' with the appropriate CSS selector for your list
+        list_selector = 'your-list-selector'
+
+        # Find the list element using the CSS selector
+        list_element = self.driver.find_element_by_css_selector(list_selector)
+
+        # Get the text content of the list element
+        list_text = list_element.text
+
+        # Assert that the text_to_check is present in the list
+        self.assertIn(text_to_check, list_text, f"{text_to_check} not found in the list")
+
+if __name__ == '__main__':
+    unittest.main()
