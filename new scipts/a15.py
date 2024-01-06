@@ -22,5 +22,6 @@ print(list_style)
 # assert list_style == "circle"
 assert "circle" in list_style.split()
 
+
 # Close the browser
 driver.quit()
